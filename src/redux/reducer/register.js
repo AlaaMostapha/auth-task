@@ -6,6 +6,13 @@ export default function registerReducer(state = {}, action) {
       return {
         ...state,
         user: action.payload.user,
+        loading: action.payload.loading,
+      };
+    }
+    case actionTypes.STOP_LOADER: {
+      return {
+        ...state,
+        loading: action.payload.loading,
       };
     }
     default:

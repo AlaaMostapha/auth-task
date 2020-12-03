@@ -4,12 +4,11 @@ import { Formik, Form } from "formik";
 import FormikControl from "../../components/Form/FormikControl";
 import CreateButton from "../../components/Button/Button";
 // import theme from "../../Theme/Theme";
-// import { connect } from "react-redux";
-// import * as actions from "../../redux/actions/login";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../redux/actions/login";
 import { ToastContainer } from "react-toastify";
+import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 function Login(props) {
   const { Log_in } = props;
   const initialValues = {
@@ -25,13 +24,16 @@ function Login(props) {
 
   const onSubmit = (values, onSubmitProps) => {
     console.log("form state", values);
-    console.log(Log_in(values));
+    Log_in(values);
+
     onSubmitProps.setSubmitting(false);
   };
 
   return (
     <>
-      <ToastContainer></ToastContainer>
+      {props.loading ? <LoadingIndicator /> : null}
+      <ToastContainer limit={2}></ToastContainer>
+      <h1>Login</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -65,8 +67,8 @@ function Login(props) {
                 />
               </Form>
               <div>
-                If you didn't have an account
-                <Link to="/register">Register</Link>
+                If you didn't have an account{" "}
+                <Link to="/register"> Register</Link>
               </div>
             </>
           );
@@ -82,9 +84,9 @@ function mapDispatchToProps(dispatch) {
   };
 }
 function mapStateToProps(state) {
-  //   console.log(state);
+  console.log(state);
   return {
-    user_data: state.loginReducer.user_data,
+    loading: state.loginReducer.loading,
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

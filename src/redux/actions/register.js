@@ -4,5 +4,6 @@ export const Registiration = (user) => ({
   type: actionTypes.REGISTER,
   payload: {
     user: user,
+    loading: true,
   },
 });

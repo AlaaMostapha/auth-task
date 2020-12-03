@@ -7,12 +7,14 @@ export default function loginReducer(state = {}, action) {
       return {
         ...state,
         user: action.payload.user,
+        loading: action.payload.loading,
       };
     }
     case actionTypes.RETURN_USER_DATA: {
       return {
         ...state,
         user_data: action.payload.user_data,
+        loading: action.payload.loading,
       };
     }
     default:

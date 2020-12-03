@@ -12,9 +12,6 @@ export const handleResponse = (response) => {
   });
   return response;
 };
-//  showErrors.map((error, index) => {
-//    return <div key={index}>{error}</div>;
-//  });
 export const handleError = (error) => {
   console.log("handle error", error);
   console.log(error.response.data.errors);

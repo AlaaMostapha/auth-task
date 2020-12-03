@@ -6,6 +6,8 @@ import CreateButton from "../../components/Button/Button";
 import { connect } from "react-redux";
 import * as actions from "../../redux/actions/register";
 import { ToastContainer } from "react-toastify";
+import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
+
 function Register(props) {
   const { Registiration } = props;
   const initialValues = {
@@ -34,7 +36,10 @@ function Register(props) {
   };
   return (
     <>
-      <ToastContainer></ToastContainer>
+      {console.log(props.loading)}
+      {props.loading ? <LoadingIndicator /> : null}
+      <ToastContainer limit={2}></ToastContainer>
+      <h1>Registiration</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -98,4 +103,10 @@ function mapDispatchToProps(dispatch) {
     Registiration: (user) => dispatch(actions.Registiration(user)),
   };
 }
-export default connect(null, mapDispatchToProps)(Register);
+function mapStateToProps(state) {
+  console.log(state);
+  return {
+    loading: state.registerReducer.loading,
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
