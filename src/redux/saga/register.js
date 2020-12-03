@@ -5,9 +5,11 @@ import { postRegister } from "../../network/api/Register";
 
 function* handleRegister(action) {
   console.log("saga", action);
-  yield call(postRegister, action.payload.user);
-  //  yield put(postRegister(action))
-  // console.log("register response", response.data);
+  try {
+    yield call(postRegister, action.payload.user);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export { handleRegister };
