@@ -31,7 +31,7 @@ function Login(props) {
 
   return (
     <>
-      {props.loading ? <LoadingIndicator /> : null}
+      {/* {props.loading ? <LoadingIndicator /> : null} */}
       <ToastContainer limit={2}></ToastContainer>
       <h1>Login</h1>
       <Formik

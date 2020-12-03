@@ -37,7 +37,7 @@ function Register(props) {
   return (
     <>
       {console.log(props.loading)}
-      {props.loading ? <LoadingIndicator /> : null}
+      {/* {props.loading ? <LoadingIndicator /> : null} */}
       <ToastContainer limit={2}></ToastContainer>
       <h1>Registiration</h1>
       <Formik
