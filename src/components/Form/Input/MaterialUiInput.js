@@ -17,7 +17,7 @@ function MaterialUiInput(props) {
             <FormControl error={meta.touched && meta.error}>
               {/* {console.log(name, meta.touched, meta.error)} */}
               <InputLabel htmlFor={name}>{label}</InputLabel>
-              <Input id={name} {...field} {...rest} />
+              <Input id={name} {...field} {...rest} variant="filled" />
               {meta.touched && meta.error ? (
                 <FormHelperText id={meta.error}>{meta.error}</FormHelperText>
               ) : null}
