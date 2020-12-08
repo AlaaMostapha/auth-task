@@ -3,42 +3,29 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "../../components/Form/FormikControl";
 import CreateButton from "../../components/Button/Button";
-import { useDispatch, useSelector } from "react-redux";
-import * as actions from "../../redux/actions/register";
-import { ToastContainer } from "react-toastify";
-
-function Register(props) {
+import { useDispatch } from "react-redux";
+import * as actions from "../../redux/actions/password";
+function ResetPassword() {
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.registerReducer.loading);
-  console.log("loading", loading);
   const initialValues = {
-    username: "",
     email: "",
     password: "",
     confirmPassword: "",
-    phoneNumber: "",
   };
   const validationSchema = Yup.object({
-    username: Yup.string().required("Username is required"),
-    email: Yup.string()
-      .required("Email is required")
-      .email("Invalid Email format"),
     password: Yup.string().required("Password is required").min(8),
     confirmPassword: Yup.string()
       .required("Confirm Password is required")
       .oneOf([Yup.ref("password"), ""], "Passwords must be matched"),
-    phoneNumber: Yup.number().required("Phone number is required"),
   });
-
   const onSubmit = (values, onSubmitProps) => {
     // console.log("form state", values);
-    dispatch(actions.Registiration(values));
+    dispatch(actions.resetPassword(values));
     onSubmitProps.setSubmitting(false);
   };
   return (
     <>
-      <ToastContainer limit={2}></ToastContainer>
-      <h1>Registiration</h1>
+      <h1>Login</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -47,13 +34,6 @@ function Register(props) {
         {(formik) => {
           return (
             <Form>
-              <FormikControl
-                control="material-ui-input"
-                type="text"
-                name="username"
-                label="Username"
-                autoComplete="off"
-              />
               <FormikControl
                 control="material-ui-input"
                 type="email"
@@ -72,20 +52,13 @@ function Register(props) {
                 control="material-ui-input"
                 type="password"
                 name="confirmPassword"
-                label="Confirm Password"
-                autoComplete="off"
-              />
-              <FormikControl
-                control="material-ui-input"
-                type="text"
-                name="phoneNumber"
-                label="Phone Number"
+                label="Confrim Password"
                 autoComplete="off"
               />
               <CreateButton
                 variant="contained"
                 type="submit"
-                text="Register"
+                text="Reset Password"
                 color="secondary"
                 disabled={!formik.isValid || formik.isSubmitting}
               />
@@ -97,4 +70,4 @@ function Register(props) {
   );
 }
 
-export default Register;
+export default ResetPassword;
