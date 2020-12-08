@@ -1,7 +1,6 @@
 import axiosInstance from "../axios/login";
 
 export const postLogin = async (user) => {
-  console.log("user api", user);
   var data = new FormData();
 
   data.append("email", user.email);
@@ -18,6 +17,5 @@ export const postLogin = async (user) => {
     data: data,
   };
 
-  // return await axiosInstance.post(requestOptions);
   return await axiosInstance(config);
 };

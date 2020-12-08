@@ -3,7 +3,6 @@ import * as actionTypes from "../constants/actionTypes";
 export default function loginReducer(state = {}, action) {
   switch (action.type) {
     case actionTypes.LOGIN: {
-      console.log("action from reducer", action);
       return {
         ...state,
         user: action.payload.user,
