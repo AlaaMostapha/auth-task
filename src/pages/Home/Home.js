@@ -1,10 +1,8 @@
 import React from "react";
-import { connect } from "react-redux";
 import ButtonAppBar from "../../components/AppBar/AppBar";
+import { useSelector } from "react-redux";
 function Home(props) {
-  const { user_data } = props;
-  // const { name } = user_data;
-  console.log(user_data);
+  const user_data = useSelector((state) => state.loginReducer.user_data);
   return (
     <>
       {user_data ? (
@@ -17,10 +15,5 @@ function Home(props) {
     </>
   );
 }
-function mapStateToProps(state) {
-  //   console.log(state);
-  return {
-    user_data: state.loginReducer.user_data,
-  };
-}
-export default connect(mapStateToProps, null)(Home);
+
+export default Home;

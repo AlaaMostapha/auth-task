@@ -3,13 +3,15 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "../../components/Form/FormikControl";
 import CreateButton from "../../components/Button/Button";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../redux/actions/register";
 import { ToastContainer } from "react-toastify";
 import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 
 function Register(props) {
-  const { Registiration } = props;
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.registerReducer.loading);
+  console.log("loading", loading);
   const initialValues = {
     username: "",
     email: "",
@@ -30,14 +32,13 @@ function Register(props) {
   });
 
   const onSubmit = (values, onSubmitProps) => {
-    console.log("form state", values);
-    Registiration(values);
+    // console.log("form state", values);
+    dispatch(actions.Registiration(values));
     onSubmitProps.setSubmitting(false);
   };
   return (
     <>
-      {console.log(props.loading)}
-      {/* {props.loading ? <LoadingIndicator /> : null} */}
+      {loading ? <LoadingIndicator /> : null}
       <ToastContainer limit={2}></ToastContainer>
       <h1>Registiration</h1>
       <Formik
@@ -98,15 +99,4 @@ function Register(props) {
   );
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    Registiration: (user) => dispatch(actions.Registiration(user)),
-  };
-}
-function mapStateToProps(state) {
-  console.log(state);
-  return {
-    loading: state.registerReducer.loading,
-  };
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default Register;

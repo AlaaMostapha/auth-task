@@ -5,12 +5,12 @@ import FormikControl from "../../components/Form/FormikControl";
 import CreateButton from "../../components/Button/Button";
 // import theme from "../../Theme/Theme";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as actions from "../../redux/actions/login";
 import { ToastContainer } from "react-toastify";
-import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 function Login(props) {
-  const { Log_in } = props;
+  const dispatch = useDispatch();
+
   const initialValues = {
     email: "",
     password: "",
@@ -23,15 +23,13 @@ function Login(props) {
   });
 
   const onSubmit = (values, onSubmitProps) => {
-    console.log("form state", values);
-    Log_in(values);
-
+    // console.log("form state", values);
+    dispatch(actions.Login(values));
     onSubmitProps.setSubmitting(false);
   };
 
   return (
     <>
-      {/* {props.loading ? <LoadingIndicator /> : null} */}
       <ToastContainer limit={2}></ToastContainer>
       <h1>Login</h1>
       <Formik
@@ -78,15 +76,4 @@ function Login(props) {
   );
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    Log_in: (user) => dispatch(actions.Login(user)),
-  };
-}
-function mapStateToProps(state) {
-  console.log(state);
-  return {
-    loading: state.loginReducer.loading,
-  };
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;
