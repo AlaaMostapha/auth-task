@@ -8,7 +8,7 @@ export const postRegister = async (user) => {
   data.append("password", user.password);
   data.append("password_confirmation", user.confirmPassword);
   data.append("mobile_number", user.phoneNumber);
-  console.log("data", data);
+
   var config = {
     method: "post",
     url: "api/v1/users",
@@ -17,8 +17,5 @@ export const postRegister = async (user) => {
     },
     data: data,
   };
-
-  // return await axiosInstance.post(requestOptions);
-  //  return await axiosInstance.post("api/v1/users", data);
   return await axiosInstance(config);
 };

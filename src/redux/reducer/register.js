@@ -10,6 +10,7 @@ export default function registerReducer(state = {}, action) {
       };
     }
     case actionTypes.STOP_LOADER: {
+      console.log(state, action);
       return {
         ...state,
         loading: action.payload.loading,
