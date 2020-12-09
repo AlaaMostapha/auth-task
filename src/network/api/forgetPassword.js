@@ -1,4 +1,4 @@
-import { axiosInstance } from "../baseUrl";
+import axiosInstance from "../axios/forgetPassword";
 
 export const forgetPassword = async (user) => {
   var data = new FormData();
