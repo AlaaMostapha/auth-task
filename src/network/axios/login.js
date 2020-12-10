@@ -1,5 +1,8 @@
-import { axiosInstance } from "../baseUrl";
+import axios from "axios";
 import * as Handlers from "../handlers/login";
+export const axiosInstance = axios.create({
+  baseURL: "https://boiler-stage.ibtikar.sa/",
+});
 
 //interceptors
 axiosInstance.interceptors.request.use((request) =>

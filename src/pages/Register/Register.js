@@ -6,7 +6,6 @@ import CreateButton from "../../components/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "../../redux/actions/register";
 import { ToastContainer } from "react-toastify";
-import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 
 function Register(props) {
   const dispatch = useDispatch();
@@ -38,7 +37,6 @@ function Register(props) {
   };
   return (
     <>
-      {/* {loading ? <LoadingIndicator /> : null} */}
       <ToastContainer limit={2}></ToastContainer>
       <h1>Registiration</h1>
       <Formik
@@ -55,6 +53,7 @@ function Register(props) {
                 name="username"
                 label="Username"
                 autoComplete="off"
+                id="userName"
               />
               <FormikControl
                 control="material-ui-input"
@@ -62,6 +61,7 @@ function Register(props) {
                 name="email"
                 label="Email"
                 autoComplete="off"
+                id="email"
               />
               <FormikControl
                 control="material-ui-input"
@@ -69,6 +69,7 @@ function Register(props) {
                 name="password"
                 label="Password"
                 autoComplete="off"
+                id="password"
               />
               <FormikControl
                 control="material-ui-input"
@@ -76,6 +77,7 @@ function Register(props) {
                 name="confirmPassword"
                 label="Confirm Password"
                 autoComplete="off"
+                id="confirmPassword"
               />
               <FormikControl
                 control="material-ui-input"
@@ -83,8 +85,10 @@ function Register(props) {
                 name="phoneNumber"
                 label="Phone Number"
                 autoComplete="off"
+                id="phoneNumber"
               />
               <CreateButton
+                id="registerBtn"
                 variant="contained"
                 type="submit"
                 text="Register"

@@ -9,7 +9,7 @@ function Home(props) {
         <>
           <ButtonAppBar name={user_data.name} />
           <h1> welcome</h1>
-          <b>{user_data.name}</b>
+          <b id="userName">{user_data.name}</b>
         </>
       ) : null}
     </>
