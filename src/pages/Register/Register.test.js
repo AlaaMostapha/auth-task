@@ -20,7 +20,7 @@ test("should return name and email", async () => {
   await page.click("button#registerBtn");
   await page.waitForResponse();
   const text = await page.$eval(
-    ". Toastify__toast - body",
+    ".Toastify__toast - body",
     (el) => el.textContent
   );
   expect(text).toBe("The email has already been taken");
