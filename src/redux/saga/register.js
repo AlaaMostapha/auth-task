@@ -1,6 +1,6 @@
 import { call } from "redux-saga/effects";
 import { postRegister } from "../../network/api/Register";
-import { stopLoader } from "../actions/actions";
+// import { stopLoader } from "../actions/actions";
 
 function* handleRegister(action) {
   try {
