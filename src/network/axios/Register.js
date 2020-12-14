@@ -1,17 +1,28 @@
-import * as Handlers from "../handlers/Register";
-import axios from "axios";
-
-export const axiosInstance = axios.create({
-  baseURL: "https://boiler-stage.ibtikar.sa/",
-});
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { axiosInstance } from "../baseUrl";
 
 //interceptors
-axiosInstance.interceptors.request.use((request) =>
-  Handlers.handleRequest(request)
-);
+axiosInstance.interceptors.request.use((request) => {
+  return request;
+});
 axiosInstance.interceptors.response.use(
-  (response) => Handlers.handleResponse(response),
-  (error) => Handlers.handleError(error)
+  (response) => {
+    toast.success("Success !", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    return response;
+  },
+  (error) => {
+    const errors = error.response.data.errors;
+    errors.map((error, index) => {
+      return toast.error(error.error, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    });
+
+    return Promise.reject({ ...error });
+  }
 );
 
 export default axiosInstance;

@@ -1,4 +1,4 @@
-import { axiosInstance } from "../axios/Register";
+import axiosInstance from "../axios/Register";
 
 export const postRegister = async (user) => {
   var data = new FormData();

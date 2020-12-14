@@ -1,4 +1,4 @@
-import { axiosInstance } from "../axios/login";
+import axiosInstance from "../axios/login";
 
 export const postLogin = async (user) => {
   var data = new FormData();
