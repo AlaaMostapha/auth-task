@@ -1,11 +1,13 @@
-export const postRegister = async (user) => {
-  return Promise.resolve({
-    data: {
-      name: "alaa",
-      email: "alaa.moustafa@ibtikar.net.sa",
-      password: "12345678",
-      password_confirmation: "12345678",
-      mobile_number: "01150550943",
+const mockAxios = jest.genMockFromModule("axios", () => {
+  return {
+    interceptors: {
+      request: { use: jest.fn(), eject: jest.fn() },
+      response: { use: jest.fn(), eject: jest.fn() },
     },
-  });
-};
+  };
+});
+
+// this is the key to fix the axios.create()
+mockAxios.create = jest.fn(() => mockAxios);
+
+export default mockAxios;

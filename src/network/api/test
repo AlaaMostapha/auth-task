@@ -1,0 +1,26 @@
+// const postRegister = require("./register");
+// const axiosInstance = require("../baseUrl");
+
+// jest.mock("axios");
+// const response = {
+//   data: {
+//     errors: [
+//       { type: "email", error: "The email has already been taken" },
+//       { type: "mobile_number", error: "The mobile number is invalid" },
+//     ],
+//   },
+// };
+// it("returns data", async () => {
+//   axiosInstance.get.mockResolvedValue({
+//     data: {
+//       name: "alaa",
+//       email: "alaa.moustafa@ibtikar.net.sa",
+//       password: "12345678",
+//       password_confirmation: "12345678",
+//       mobile_number: "01150550943",
+//     },
+//   });
+
+//   const data = await postRegister();
+//   expect(data).toEqual(response);
+// });
