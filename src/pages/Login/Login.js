@@ -3,14 +3,19 @@ import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import FormikControl from "../../components/Form/FormikControl";
 import CreateButton from "../../components/Button/Button";
-// import theme from "../../Theme/Theme";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as actions from "../../redux/actions/login";
 import { ToastContainer } from "react-toastify";
+import * as passwordActions from "../../redux/actions/password";
 function Login(props) {
   const dispatch = useDispatch();
 
+  const forgetPassword = (user) => {
+    if (user) {
+      dispatch(passwordActions.forgetPassword(user));
+    }
+  };
   const initialValues = {
     email: "",
     password: "",
@@ -67,6 +72,9 @@ function Login(props) {
               <div>
                 If you didn't have an account{" "}
                 <Link to="/register"> Register</Link>
+                <button onClick={() => forgetPassword(formik.values)}>
+                  forget password
+                </button>
               </div>
             </>
           );
