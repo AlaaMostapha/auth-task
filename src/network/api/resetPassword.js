@@ -4,9 +4,8 @@ export const resetPassword = async (user) => {
   var data = new FormData();
   console.log(user);
   data.append("email", user.email);
-  data.append("token", "");
-  data.append("password", user.password);
-  data.append("password_confirmation", user.confirmPassword);
+  data.append("token", "Ifv7d69yyO");
+  data.append("password", user.newPassword);
 
   var config = {
     method: "post",

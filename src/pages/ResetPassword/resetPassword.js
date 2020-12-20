@@ -9,14 +9,11 @@ function ResetPassword() {
   const dispatch = useDispatch();
   const initialValues = {
     email: "",
-    password: "",
-    confirmPassword: "",
+    newPassword: "",
   };
   const validationSchema = Yup.object({
-    password: Yup.string().required("Password is required").min(8),
-    confirmPassword: Yup.string()
-      .required("Confirm Password is required")
-      .oneOf([Yup.ref("password"), ""], "Passwords must be matched"),
+    email: Yup.string().required("email is required"),
+    newPassword: Yup.string().required("Password is required").min(8),
   });
   const onSubmit = (values, onSubmitProps) => {
     // console.log("form state", values);
@@ -25,7 +22,7 @@ function ResetPassword() {
   };
   return (
     <>
-      <h1>Login</h1>
+      <h1>Reset password</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -44,15 +41,8 @@ function ResetPassword() {
               <FormikControl
                 control="material-ui-input"
                 type="password"
-                name="password"
-                label="Password"
-                autoComplete="off"
-              />
-              <FormikControl
-                control="material-ui-input"
-                type="password"
-                name="confirmPassword"
-                label="Confrim Password"
+                name="newPassword"
+                label="New Password"
                 autoComplete="off"
               />
               <CreateButton
