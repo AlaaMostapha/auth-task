@@ -9,7 +9,6 @@ function Input(props) {
 
   return (
     <div>
-      {console.log(meta)}
       <TextField {...field} type={type} label={label} />
       {/* <p>{meta.invalid && meta.invalid.message}</p> */}
       <ErrorMessage name={name} errors={errors} as={<Error />} />
