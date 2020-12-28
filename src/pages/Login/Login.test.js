@@ -1,3 +1,5 @@
+import "regenerator-runtime/runtime";
+
 const puppeteer = require("puppeteer");
 
 test("should return name and email", async () => {
