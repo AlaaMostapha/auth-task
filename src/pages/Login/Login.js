@@ -26,11 +26,13 @@ function Login(props) {
     // console.log("form state", values);
     dispatch(actions.Login(values));
   };
-  const { handleSubmit, control, errors } = useForm({
+  const { handleSubmit, control, errors, formState } = useForm({
     mode: "onSubmit",
     defaultValues: defaultValues,
     resolver: yupResolver(schema),
   });
+  console.log("form state", formState);
+  const { isDirty, isValid } = formState;
   return (
     <>
       <ToastContainer limit={2}></ToastContainer>
@@ -55,6 +57,7 @@ function Login(props) {
           type="submit"
           text="Login"
           color="secondary"
+          // disabled={!isDirty || (isDirty && !isValid)}
         />
       </form>
       <div>
