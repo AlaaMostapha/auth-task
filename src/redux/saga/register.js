@@ -6,7 +6,7 @@ function* handleRegister(action) {
   try {
     yield call(postRegister, action.payload.user);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     // console.log(yield call(stopLoader));
   }
 }

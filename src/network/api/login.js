@@ -1,4 +1,4 @@
-import axiosInstance from "../axios/login";
+import axiosInstance from "../baseUrl";
 
 export const postLogin = async (user) => {
   var data = new FormData();
@@ -17,5 +17,5 @@ export const postLogin = async (user) => {
     data: data,
   };
 
-  return await axiosInstance(config);
+  return await axiosInstance.get(config, { handlerEnabled: true });
 };
