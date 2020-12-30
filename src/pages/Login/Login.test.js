@@ -1,9 +1,9 @@
 import "regenerator-runtime/runtime";
 
 const puppeteer = require("puppeteer");
-
+let browser;
 test("should return name and email", async () => {
-  const browser = await puppeteer.launch({
+  browser = await puppeteer.launch({
     headless: false,
   });
   const page = await browser.newPage();
@@ -20,3 +20,7 @@ test("should return name and email", async () => {
   // const userName = await page.$eval("#usernName", (el) => el.textContent);
   // expect(userName).toBe("alaa mostafa");
 }, 40000);
+
+afterAll(() => {
+  browser.close();
+});

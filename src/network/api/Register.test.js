@@ -14,7 +14,7 @@ const data = {
     mobile_number: "01150550943",
   },
 };
-it("check register", async () => {
+it("check user register", async () => {
   mockAxios.mockResolvedValue({
     data: [data],
   });
@@ -34,3 +34,5 @@ it("check register", async () => {
   };
   expect(result).toEqual(response);
 });
+
+it.todo("Registeration");

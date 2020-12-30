@@ -1,11 +1,14 @@
 import "regenerator-runtime/runtime";
 const puppeteer = require("puppeteer");
-
-test("should return email and phone are already exist", async () => {
-  const browser = await puppeteer.launch({
+let browser;
+let page;
+beforeAll(async () => {
+  browser = await puppeteer.launch({
     headless: false,
   });
-  const page = await browser.newPage();
+  page = await browser.newPage();
+});
+test("should return email and phone are already exist", async () => {
   await page.goto("http://localhost:3000/register");
   await page.click("input#userName");
   await page.type("input#userName", "alaa");
@@ -25,3 +28,7 @@ test("should return email and phone are already exist", async () => {
   expect(header).toBe("The email has already been taken");
   // expect(header).toBe("The mobile number is invalid");
 }, 40000);
+
+afterAll(async () => {
+  await browser.close();
+});
