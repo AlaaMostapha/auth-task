@@ -1,20 +1,21 @@
 import { toast } from "react-toastify";
 // import "react-toastownify/dist/ReactToastify.css";
-import history from "../routes/history";
+// import history from "../routes/history";
 export const isHandlerEnabled = (config = {}) => {
-  console.log(config.handlerEnabled);
+  console.log("config", config);
   return config.hasOwnProperty("handlerEnabled") && config.handlerEnabled
     ? true
     : false;
 };
 export const requestHandler = (request) => {
+  console.log("isHandlerEnabled", isHandlerEnabled);
   if (isHandlerEnabled) {
     console.log("interceptor request", request);
   }
   return request;
 };
 export const responseHandler = (response) => {
-  console.log(response);
+  console.log("response", response);
   if (isHandlerEnabled) {
     toast.success("Success !", {
       position: toast.POSITION.TOP_CENTER,
@@ -27,6 +28,7 @@ export const responseHandler = (response) => {
 };
 export const errorHandler = (error) => {
   const errors = error.response.data.errors;
+  console.log("error", error);
   if (isHandlerEnabled) {
     errors.map((error, index) => {
       return toast.error(error.error, {

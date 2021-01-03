@@ -15,5 +15,5 @@ export const postRegister = async (user) => {
     },
     data: data,
   };
-  return await axiosInstance(config);
+  return await axiosInstance(config, { handlerEnabled: false });
 };

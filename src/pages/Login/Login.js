@@ -31,8 +31,8 @@ function Login(props) {
     defaultValues: defaultValues,
     resolver: yupResolver(schema),
   });
-  console.log("form state", formState);
-  const { isDirty, isValid } = formState;
+  // console.log("form state", formState);
+  // const { isDirty, isValid } = formState;
   return (
     <>
       <ToastContainer limit={2}></ToastContainer>
