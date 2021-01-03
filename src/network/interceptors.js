@@ -1,25 +1,26 @@
 import { toast } from "react-toastify";
-// import "react-toastownify/dist/ReactToastify.css";
-// import history from "../routes/history";
+import "react-toastify/dist/ReactToastify.css";
+import history from "../routes/history";
 export const isHandlerEnabled = (config = {}) => {
-  console.log("config", config);
   return config.hasOwnProperty("handlerEnabled") && config.handlerEnabled
     ? true
     : false;
 };
 export const requestHandler = (request) => {
-  console.log("isHandlerEnabled", isHandlerEnabled);
-  if (isHandlerEnabled) {
+  console.log("interceptor request our", request);
+  if (isHandlerEnabled(request)) {
     console.log("interceptor request", request);
   }
   return request;
 };
 export const responseHandler = (response) => {
-  console.log("response", response);
-  if (isHandlerEnabled) {
+  console.log(response);
+  if (isHandlerEnabled(response.config)) {
+    console.log("response", response);
     toast.success("Success !", {
       position: toast.POSITION.TOP_CENTER,
     });
+    history.push("home");
   }
   // if () {
   //   history.push("home");
@@ -29,7 +30,10 @@ export const responseHandler = (response) => {
 export const errorHandler = (error) => {
   const errors = error.response.data.errors;
   console.log("error", error);
-  if (isHandlerEnabled) {
+  toast.error(error, {
+    position: toast.POSITION.TOP_CENTER,
+  });
+  if (isHandlerEnabled(error.config)) {
     errors.map((error, index) => {
       return toast.error(error.error, {
         position: toast.POSITION.TOP_CENTER,

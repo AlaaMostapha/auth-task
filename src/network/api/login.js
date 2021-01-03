@@ -1,6 +1,7 @@
 import axiosInstance from "../baseUrl";
 
 export const postLogin = async (user) => {
+  var FormData = require("form-data");
   var data = new FormData();
 
   data.append("email", user.email);
@@ -10,12 +11,14 @@ export const postLogin = async (user) => {
 
   var config = {
     method: "post",
-    url: "api/v1/users/login",
+    url: "/api/v1/users/login",
     headers: {
       "Accept-Language": "en",
+      "X-Api-Key": "boilerplate_web",
     },
     data: data,
+    handlerEnabled: true,
   };
-
-  return await axiosInstance.get(config, { handlerEnabled: true });
+  console.log("axios", await axiosInstance(config));
+  return await axiosInstance(config);
 };
