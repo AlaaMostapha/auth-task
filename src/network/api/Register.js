@@ -17,7 +17,7 @@ export const postRegister = async (user) => {
       "X-Api-Key": "boilerplate_web",
     },
     data: data,
-    handlerEnabled: false,
+    handlerEnabled: true,
   };
   return await axiosInstance(config);
 };

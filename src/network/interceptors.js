@@ -11,6 +11,9 @@ export const requestHandler = (request) => {
   if (isHandlerEnabled(request)) {
     console.log("interceptor request", request);
   }
+  if (request.status == 200) {
+    history.push("home");
+  }
   return request;
 };
 export const responseHandler = (response) => {
