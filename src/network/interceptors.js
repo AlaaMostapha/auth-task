@@ -7,12 +7,8 @@ export const isHandlerEnabled = (config = {}) => {
     : false;
 };
 export const requestHandler = (request) => {
-  console.log("interceptor request our", request);
   if (isHandlerEnabled(request)) {
     console.log("interceptor request", request);
-  }
-  if (request.status == 200) {
-    history.push("home");
   }
   return request;
 };
@@ -37,11 +33,17 @@ export const errorHandler = (error) => {
     position: toast.POSITION.TOP_CENTER,
   });
   if (isHandlerEnabled(error.config)) {
-    errors.map((error, index) => {
-      return toast.error(error.error, {
+    if (errors) {
+      errors.map((error, index) => {
+        return toast.error(error.error, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      });
+    } else {
+      return toast.error("Your Email or Password is invalid", {
         position: toast.POSITION.TOP_CENTER,
       });
-    });
+    }
   }
 
   return Promise.reject({ ...error });

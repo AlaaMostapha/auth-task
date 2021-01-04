@@ -8,7 +8,7 @@ axiosInstance.interceptors.request.use((request) =>
   Handlers.requestHandler(request)
 );
 axiosInstance.interceptors.response.use(
-  (response) => Handlers.requestHandler(response),
+  (response) => Handlers.responseHandler(response),
   (error) => Handlers.errorHandler(error)
 );
 
