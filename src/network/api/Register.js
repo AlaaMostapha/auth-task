@@ -1,5 +1,5 @@
 import axiosInstance from "../baseUrl";
-import { X_API_KEY } from "../apiKeys";
+const X_API_KEY = process.env.REACT_APP_X_API_KEY;
 export const postRegister = async (user) => {
   var data = new FormData();
 
