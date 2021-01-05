@@ -36,7 +36,7 @@ function Login(props) {
   // const { isDirty, isValid } = formState;
   return (
     <>
-      {loading && <LoadingIndicator />}
+      {/* {loading && <LoadingIndicator />} */}
       <ToastContainer limit={2}></ToastContainer>
       <h1>Login</h1>
       <form onSubmit={handleSubmit(onSubmit)}>

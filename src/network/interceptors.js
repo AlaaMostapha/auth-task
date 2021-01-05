@@ -39,6 +39,10 @@ export const errorHandler = (error) => {
           position: toast.POSITION.TOP_CENTER,
         });
       });
+    } else if (error) {
+      return toast.error(error, {
+        position: toast.POSITION.TOP_CENTER,
+      });
     } else {
       return toast.error("Your Email or Password is invalid", {
         position: toast.POSITION.TOP_CENTER,

@@ -1,5 +1,5 @@
 import axiosInstance from "../baseUrl";
-
+import { X_API_KEY } from "../apiKeys";
 export const postRegister = async (user) => {
   var data = new FormData();
 
@@ -14,7 +14,7 @@ export const postRegister = async (user) => {
     url: "api/v1/users",
     headers: {
       "Accept-Language": "en",
-      "X-Api-Key": "boilerplate_web",
+      "X-Api-Key": X_API_KEY,
     },
     data: data,
     handlerEnabled: true,
