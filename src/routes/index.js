@@ -4,9 +4,9 @@ import history from "./history";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Home from "../pages/Home/Home";
-export default function Routes({ location }) {
+export default function Routes() {
   return (
-    <Router history={history} location={location}>
+    <Router history={history}>
       <Switch>
         <Route exact path={["/", "/login"]} component={Login} />
         <Route path="/register" component={Register} />

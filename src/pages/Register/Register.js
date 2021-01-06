@@ -4,14 +4,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Input from "../../components/reactHookForm/input";
 import * as Yup from "yup";
 import CreateButton from "../../components/Button/Button";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as actions from "../../redux/actions/register";
 import { ToastContainer } from "react-toastify";
 
 function Register(props) {
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.registerReducer.loading);
-  console.log("loading", loading);
+  // const loading = useSelector((state) => state.registerReducer.loading);
+  // console.log("loading", loading);
   const defaultValues = {
     username: "",
     email: "",
@@ -63,6 +63,7 @@ function Register(props) {
           type="password"
           name="password"
           label="Password"
+          autoComplete="on"
           control={control}
           errors={errors}
         />
@@ -70,6 +71,7 @@ function Register(props) {
           type="password"
           name="confirmPassword"
           label="Confirm Password"
+          autoComplete="on"
           control={control}
           errors={errors}
         />

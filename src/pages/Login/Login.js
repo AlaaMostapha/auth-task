@@ -5,13 +5,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Input from "../../components/reactHookForm/input";
 import CreateButton from "../../components/Button/Button";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as actions from "../../redux/actions/login";
 import { ToastContainer } from "react-toastify";
-import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
+// import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 function Login(props) {
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.loginReducer.loading);
+  // const loading = useSelector((state) => state.loginReducer.loading);
   const defaultValues = {
     email: "",
     password: "",
@@ -51,6 +51,7 @@ function Login(props) {
           type="password"
           name="password"
           label="password"
+          autoComplete="on"
           control={control}
           errors={errors}
         />
